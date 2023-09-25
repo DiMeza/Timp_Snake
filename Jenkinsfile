@@ -3,19 +3,13 @@ node ('ubuntu'){
 	stage('Cloning Git') {
 		checkout scm
 	}
-stage('Build-and-Tag') {
-	app = docker.build("dimeza/snake")
+	stage('Build-and-Tag') {
+		app = docker.build("dimeza/snake")
 
-	}
-stage('Post-to-dockerhub') {
+		}
+	stage('Pull-image-server') {
 
-dockes.withRegistry('https://registry.hub.docker.com', 'dockerhub_creds') {
-	app. push("latest")
-			     }
-	}
-stage('Pull-image-server') {
-
-	sh "docker-compose down"
-	sh "docker-compose up -d"
-	}
+		sh "docker-compose down"
+		sh "docker-compose up -d"
+		}
 }
