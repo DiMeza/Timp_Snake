@@ -6,10 +6,10 @@ node ('ubuntu'){
 	stage('Build-and-Tag') {
 		app = docker.build("dimeza/snake")
 
-		}
+	}
 	stage('Pull-image-server') {
 
 		sh "docker-compose down"
 		sh "docker-compose up -d"
-		}
+	}
 }
